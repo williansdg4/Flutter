@@ -7,7 +7,7 @@ class DB {
   DB._();
   // Criar uma instancia de DB
   static final DB instance = DB._();
-  // Instancia do SQLite
+  //Instancia do SQLite
   static Database? _database;
 
   get database async {
@@ -49,7 +49,7 @@ class DB {
   String get _historico => '''
     CREATE TABLE historico (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
-      data_operacao DATETIME,
+      data_operacao INT,
       tipo_operacao TEXT,
       moeda TEXT,
       sigla TEXT,

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 class AppSettings extends ChangeNotifier {
-  //late SharedPreferences _prefs;
+  // late SharedPreferences _prefs;
   late Box box;
-
   Map<String, String> locale = {
     'locale': 'pt_BR',
     'name': 'R\$',
@@ -21,7 +20,7 @@ class AppSettings extends ChangeNotifier {
   }
 
   Future<void> _startPreferences() async {
-    //_prefs = await SharedPreferences.getInstance();
+    // _prefs = await SharedPreferences.getInstance();
     box = await Hive.openBox('preferencias');
   }
 

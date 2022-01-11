@@ -1,24 +1,24 @@
-import 'package:cripto_moedas/Configs/app_settings.dart';
+import 'package:cripto_moedas/configs/app_settings.dart';
 import 'package:cripto_moedas/models/moeda.dart';
 import 'package:cripto_moedas/pages/moedas_detalhes_page.dart';
 import 'package:cripto_moedas/repositories/favoritas_repository.dart';
 import 'package:cripto_moedas/repositories/moeda_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:provider/src/provider.dart';
+import 'package:provider/provider.dart';
 
 class MoedasPage extends StatefulWidget {
   MoedasPage({Key? key}) : super(key: key);
 
   @override
-  State<MoedasPage> createState() => _MoedasPageState();
+  _MoedasPageState createState() => _MoedasPageState();
 }
 
 class _MoedasPageState extends State<MoedasPage> {
   final tabela = MoedaRepository.tabela;
-  List<Moeda> selecionadas = [];
   late NumberFormat real;
   late Map<String, String> loc;
+  List<Moeda> selecionadas = [];
   late FavoritasRepository favoritas;
 
   readNumberFormat() {
@@ -34,15 +34,14 @@ class _MoedasPageState extends State<MoedasPage> {
       icon: Icon(Icons.language),
       itemBuilder: (context) => [
         PopupMenuItem(
-          child: ListTile(
-            leading: Icon(Icons.swap_vert),
-            title: Text('Usar $locale'),
-            onTap: () {
-              context.read<AppSettings>().setLocale(locale, name);
-              Navigator.pop(context); //fecha o menubutton
-            },
-          ),
-        ),
+            child: ListTile(
+          leading: Icon(Icons.swap_vert),
+          title: Text('Usar $locale'),
+          onTap: () {
+            context.read<AppSettings>().setLocale(locale, name);
+            Navigator.pop(context);
+          },
+        )),
       ],
     );
   }
@@ -50,7 +49,7 @@ class _MoedasPageState extends State<MoedasPage> {
   appBarDinamica() {
     if (selecionadas.isEmpty) {
       return AppBar(
-        title: Text('Cripo Moedas'),
+        title: Text('Cripto Moedas'),
         actions: [
           changeLanguageButton(),
         ],
@@ -60,34 +59,25 @@ class _MoedasPageState extends State<MoedasPage> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            setState(() {
-              selecionadas = [];
-            });
+            limparSelecionadas();
           },
         ),
         title: Text('${selecionadas.length} selecionadas'),
         backgroundColor: Colors.blueGrey[50],
         elevation: 1,
         iconTheme: IconThemeData(color: Colors.black87),
-        toolbarTextStyle: TextTheme(
+        textTheme: TextTheme(
           headline6: TextStyle(
             color: Colors.black87,
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
-        ).bodyText2,
-        titleTextStyle: TextTheme(
-          headline6: TextStyle(
-            color: Colors.black87,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ).headline6,
+        ),
       );
     }
   }
 
-  mostrarDetalhe(Moeda moeda) {
+  mostrarDetalhes(Moeda moeda) {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -107,13 +97,15 @@ class _MoedasPageState extends State<MoedasPage> {
     // favoritas = Provider.of<FavoritasRepository>(context);
     favoritas = context.watch<FavoritasRepository>();
     readNumberFormat();
+
     return Scaffold(
       appBar: appBarDinamica(),
       body: ListView.separated(
         itemBuilder: (BuildContext context, int moeda) {
           return ListTile(
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(12))),
+              borderRadius: BorderRadius.all(Radius.circular(12)),
+            ),
             leading: (selecionadas.contains(tabela[moeda]))
                 ? CircleAvatar(
                     child: Icon(Icons.check),
@@ -133,11 +125,7 @@ class _MoedasPageState extends State<MoedasPage> {
                 ),
                 if (favoritas.lista
                     .any((fav) => fav.sigla == tabela[moeda].sigla))
-                  Icon(
-                    Icons.circle,
-                    color: Colors.amber,
-                    size: 8,
-                  ),
+                  Icon(Icons.circle, color: Colors.amber, size: 8),
               ],
             ),
             trailing: Text(
@@ -153,7 +141,7 @@ class _MoedasPageState extends State<MoedasPage> {
                     : selecionadas.add(tabela[moeda]);
               });
             },
-            onTap: () => mostrarDetalhe(tabela[moeda]),
+            onTap: () => mostrarDetalhes(tabela[moeda]),
           );
         },
         padding: EdgeInsets.all(16),
@@ -169,8 +157,11 @@ class _MoedasPageState extends State<MoedasPage> {
               },
               icon: Icon(Icons.star),
               label: Text(
-                "FAVORITAR",
-                style: TextStyle(letterSpacing: 0, fontWeight: FontWeight.bold),
+                'FAVORITAR',
+                style: TextStyle(
+                  letterSpacing: 0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             )
           : null,

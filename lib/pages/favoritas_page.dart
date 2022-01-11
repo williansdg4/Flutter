@@ -1,11 +1,12 @@
+import 'package:cripto_moedas/models/moeda.dart';
 import 'package:cripto_moedas/repositories/favoritas_repository.dart';
 import 'package:cripto_moedas/widgets/moeda_card.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class FavoritasPage extends StatefulWidget {
-  const FavoritasPage({Key? key}) : super(key: key);
+  FavoritasPage({Key? key}) : super(key: key);
 
   @override
   _FavoritasPageState createState() => _FavoritasPageState();
@@ -27,7 +28,7 @@ class _FavoritasPageState extends State<FavoritasPage> {
             return favoritas.lista.isEmpty
                 ? ListTile(
                     leading: Icon(Icons.star),
-                    title: Text('Ainda não há favoritas!'),
+                    title: Text('Ainda não há moedas favoritas'),
                   )
                 : ListView.builder(
                     itemCount: favoritas.lista.length,

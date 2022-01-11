@@ -1,7 +1,7 @@
 import 'dart:collection';
+
 import 'package:cripto_moedas/adapters/moeda_hive_adapter.dart';
 import 'package:cripto_moedas/models/moeda.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
@@ -35,7 +35,6 @@ class FavoritasRepository extends ChangeNotifier {
 
   saveAll(List<Moeda> moedas) {
     moedas.forEach((moeda) {
-      //if (!_lista.contains(moeda)) _lista.add(moeda); // utilizado com o shared_preferences
       if (!_lista.any((atual) => atual.sigla == moeda.sigla)) {
         _lista.add(moeda);
         box.put(moeda.sigla, moeda);

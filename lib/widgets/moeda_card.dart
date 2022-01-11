@@ -1,4 +1,4 @@
-import 'package:cripto_moedas/Configs/app_settings.dart';
+import 'package:cripto_moedas/configs/app_settings.dart';
 import 'package:cripto_moedas/models/moeda.dart';
 import 'package:cripto_moedas/pages/moedas_detalhes_page.dart';
 import 'package:cripto_moedas/repositories/favoritas_repository.dart';
@@ -17,17 +17,16 @@ class MoedaCard extends StatefulWidget {
 
 class _MoedaCardState extends State<MoedaCard> {
   late NumberFormat real;
-  late Map<String, String> loc;
-
-  readNumberFormat() {
-    loc = context.watch<AppSettings>().locale;
-    real = NumberFormat.currency(locale: loc['locale'], name: loc['name']);
-  }
 
   static Map<String, Color> precoColor = <String, Color>{
     'up': Colors.teal,
     'down': Colors.indigo,
   };
+
+  readNumberFormat() {
+    final loc = context.watch<AppSettings>().locale;
+    real = NumberFormat.currency(locale: loc['locale'], name: loc['name']);
+  }
 
   abrirDetalhes() {
     Navigator.push(
@@ -45,7 +44,6 @@ class _MoedaCardState extends State<MoedaCard> {
       margin: EdgeInsets.only(top: 12),
       elevation: 2,
       child: InkWell(
-        //InkWell torna o card clicavel
         onTap: () => abrirDetalhes(),
         child: Padding(
           padding: EdgeInsets.only(top: 20, bottom: 20, left: 20),
@@ -102,14 +100,14 @@ class _MoedaCardState extends State<MoedaCard> {
                 itemBuilder: (context) => [
                   PopupMenuItem(
                     child: ListTile(
-                      title: Text('Remover das favoritas'),
+                      title: Text('Remover das Favoritas'),
                       onTap: () {
                         Navigator.pop(context);
                         Provider.of<FavoritasRepository>(context, listen: false)
                             .remove(widget.moeda);
                       },
                     ),
-                  )
+                  ),
                 ],
               ),
             ],
