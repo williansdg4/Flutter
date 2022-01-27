@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>279692482410-gldufhtel6s50cq52cepnv6q77mhcg26.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.279692482410-gldufhtel6s50cq52cepnv6q77mhcg26</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBWMIjwQvEEQXRuoQZr6qN4GkyEjzT4CSw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>279692482410</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.criptoMoedas</string>
+	<key>PROJECT_ID</key>
+	<string>cripto-moedas-app-2445c</string>
+	<key>STORAGE_BUCKET</key>
+	<string>cripto-moedas-app-2445c.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:279692482410:ios:9c37cfdc60fc1c83397713</string>
+</dict>
+</plist>

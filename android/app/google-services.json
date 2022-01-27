@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "279692482410",
+    "project_id": "cripto-moedas-app-2445c",
+    "storage_bucket": "cripto-moedas-app-2445c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:279692482410:android:878fc585e3c76ef0397713",
+        "android_client_info": {
+          "package_name": "com.example.cripto_moedas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "279692482410-dssug00svoj1hfistjfl9uhjiokfjbaq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzREBE0bHS8n4NQCJIVNsONKy0a6Oe1PA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "279692482410-dssug00svoj1hfistjfl9uhjiokfjbaq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "279692482410-gldufhtel6s50cq52cepnv6q77mhcg26.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.criptoMoedas"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
